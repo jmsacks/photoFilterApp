@@ -66,8 +66,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2L6-Ps-p9N">
                                     <size key="itemSize" width="150" height="150"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="50" height="50"/>
                                     <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
                                 </collectionViewFlowLayout>
                                 <cells>
@@ -81,21 +81,79 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B1M-Wx-fUf">
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zax-mf-1YE">
+                                                    <rect key="frame" x="8" y="121" width="134" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="Zax-mf-1YE" firstAttribute="leading" secondItem="7sH-ZI-ogR" secondAttribute="leadingMargin" id="0Cw-qS-VNt"/>
                                             <constraint firstItem="B1M-Wx-fUf" firstAttribute="top" secondItem="7sH-ZI-ogR" secondAttribute="topMargin" constant="-8" id="36N-aZ-MNS"/>
+                                            <constraint firstItem="Zax-mf-1YE" firstAttribute="top" secondItem="7sH-ZI-ogR" secondAttribute="topMargin" constant="113" id="HQh-p4-AZb"/>
+                                            <constraint firstAttribute="centerX" secondItem="Zax-mf-1YE" secondAttribute="centerX" id="Hss-xZ-g8W"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="B1M-Wx-fUf" secondAttribute="bottom" constant="-8" id="WVi-dK-Rix"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="B1M-Wx-fUf" secondAttribute="trailing" constant="-8" id="i4o-03-wPm"/>
+                                            <constraint firstItem="Zax-mf-1YE" firstAttribute="trailing" secondItem="7sH-ZI-ogR" secondAttribute="trailingMargin" id="lko-cM-Lm9"/>
                                             <constraint firstItem="B1M-Wx-fUf" firstAttribute="leading" secondItem="7sH-ZI-ogR" secondAttribute="leadingMargin" constant="-8" id="vkb-tv-ayS"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="B1M-Wx-fUf" id="zmn-0o-Bpy"/>
+                                            <outlet property="photoTitle" destination="Zax-mf-1YE" id="ivx-QE-pqJ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="headerView" id="Wn6-Lq-7AN" customClass="HeaderFooterCollectionReusableView" customModule="PhotoFilters" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1J-7I-TtB">
+                                            <rect key="frame" x="279" y="15" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerY" secondItem="U1J-7I-TtB" secondAttribute="centerY" id="8PZ-ND-Dkg"/>
+                                        <constraint firstAttribute="centerX" secondItem="U1J-7I-TtB" secondAttribute="centerX" id="Rl2-9Z-gxM"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="viewTitle" destination="U1J-7I-TtB" id="nER-KE-y6v"/>
+                                    </connections>
+                                </collectionReusableView>
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="footerView" id="UER-Xw-pTd" customClass="FooterCollectionReusableView" customModule="PhotoFilters" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="240" width="600" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Test" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfd-yX-Vsl">
+                                            <rect key="frame" x="284.5" y="14.5" width="31.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerY" secondItem="tfd-yX-Vsl" secondAttribute="centerY" id="CS9-3a-h70"/>
+                                        <constraint firstAttribute="centerX" secondItem="tfd-yX-Vsl" secondAttribute="centerX" id="W5K-PC-sv0"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="footerTitle" destination="tfd-yX-Vsl" id="qNz-hl-wdb"/>
+                                    </connections>
+                                </collectionReusableView>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNG-Av-FlF">
+                                <rect key="frame" x="276.5" y="550" width="48" height="30"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButton:" destination="qN3-yU-yP7" eventType="touchUpInside" id="aft-B7-WEj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -103,6 +161,8 @@
                             <constraint firstItem="rYV-iZ-g8W" firstAttribute="top" secondItem="zwG-50-Jr9" secondAttribute="topMargin" id="GIE-1q-Zlq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rYV-iZ-g8W" secondAttribute="trailing" constant="-16" id="eEb-vb-Q2Z"/>
                             <constraint firstItem="MAK-K5-bTF" firstAttribute="top" secondItem="rYV-iZ-g8W" secondAttribute="bottom" id="gBj-tf-zWl"/>
+                            <constraint firstAttribute="centerX" secondItem="fNG-Av-FlF" secondAttribute="centerX" id="i8R-h1-SVc"/>
+                            <constraint firstItem="MAK-K5-bTF" firstAttribute="top" secondItem="fNG-Av-FlF" secondAttribute="bottom" constant="20" id="xnm-is-1dV"/>
                         </constraints>
                     </view>
                     <connections>

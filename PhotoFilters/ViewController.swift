@@ -45,7 +45,7 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
         let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default) { (action) -> Void in
             let imagePicker = UIImagePickerController()
             imagePicker.allowsEditing = true
-            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
                 
             }
             imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
