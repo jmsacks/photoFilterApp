@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol GalleryDelegate {
+protocol GalleryDelegate : class {
     func didTapOnPicture(image : UIImage)
 }
 
@@ -21,12 +21,15 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var delegate: GalleryDelegate?
+    weak var delegate: GalleryDelegate?
 //    var myParentViewController : ViewController?
 //    var myProfileParentViewController : ProfileViewController
     
     var images = [UIImage]()
     var imageTitles = [String]()
+    var flowlayout : UICollectionViewFlowLayout!
+    var pinchAction = PinchOperation ()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.dataSource = self
@@ -50,6 +53,15 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         self.imageTitles.append(image3Title)
         self.imageTitles.append(image4Title)
         
+        self.flowlayout = self.collectionView.collectionViewLayout as UICollectionViewFlowLayout
+        // Do any additional setup after loading the view, typically from a nib.
+        
+       // var pinch = UIPinchGestureRecognizer(target: self, action: "pinchAction:")
+       // self.collectionView.addGestureRecognizer(pinch)
+        self.pinchAction.collectionView = self.collectionView
+        self.pinchAction.flowLayout = self.flowlayout
+        var pinchRecognizer = UIPinchGestureRecognizer(target: pinchAction, action: "pinchAction:")
+        self.collectionView.addGestureRecognizer(pinchRecognizer)
 
         // Do any additional setup after loading the view.
     }
@@ -77,27 +89,19 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         
         if (kind == UICollectionElementKindSectionHeader) {
             var headerView: HeaderFooterCollectionReusableView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "headerView", forIndexPath: indexPath) as HeaderFooterCollectionReusableView
-//          headerView.backgroundColor = UIColor.purpleColor()
             headerView.viewTitle.text = String ("Perty Pictures")
             return headerView
         }
         
         else {
             var footerView: FooterCollectionReusableView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: "footerView", forIndexPath: indexPath) as FooterCollectionReusableView
-          //footerView.backgroundColor = UIColor.redColor()
             footerView.footerTitle.text = String ("Choose from \(self.images.count) photos above")
-          //  footerView.footerTitle.
             return footerView
         }
         
-//            NSString *title = [[NSString alloc]initWithFormat:@"Recipe Group #%i", indexPath.section + 1];
-//            headerView.title.text = title;
-//            UIImage *headerImage = [UIImage imageNamed:@"header_banner.png"];
-//            headerView.backgroundImage.image = headerImage;
-//            
-//            reusableview = headerView;
         }
-    }
+        }
+
     
     
 
